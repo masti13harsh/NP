@@ -1,4 +1,4 @@
-var app = angular.module('NatkhatBharat', ['ui.router', 'ngMaterial', 'modelServices']);
+var app = angular.module('NatkhatBharat', ['ui.router', 'ngMaterial', 'modelServices', 'oc.lazyLoad']);
 
 app
 .config(['$stateProvider', '$urlRouterProvider',
@@ -28,6 +28,19 @@ app
 	            url: '/signUp',
 	            templateUrl: 'views/index/signUpForm.html',
 	            controller: 'loginController'
+	        })
+	        .state('home', {
+	            url: '/home',
+	            views: {
+	                header: {
+	                    templateUrl: 'views/home/header.html',
+	                    controller: 'homeController'
+	                },
+	                content: {
+	                    templateUrl: 'views/home/content.html',
+	                    controller: 'homeController'
+	            	}
+	            }
 	        });
 }])
 .run(['$rootScope', '$state', function($rootScope, $state) {
